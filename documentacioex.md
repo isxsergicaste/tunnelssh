@@ -1,7 +1,17 @@
 # **Exercicis ldap phpldapadmin tunel ssh**
 
+## INDEX
 
-## Exercici 1
+El exercicis estan realitzats en el ordre que estan en la documentació
+
+El primer exercici del segon, estan separats per:
+
+**############################################################################**
+
+## **Exercici 1**
+
+**Ldap estara en el servidor de Amazon i el phpldapadmin el crearem de
+manera local.**
 
 Comencem per configurar la maquina de Amazon per tal que només es pugui
 accedir a traves del port 22.
@@ -18,7 +28,7 @@ Un cop configurats els ports entrem dins la maquina.
 Obrim el container de ldap y comprobem que funciona
 
 ```
-docker run --rm --name ldap -h ldap -d edtasixm06/ldapserver19
+[fedora@ip-172-31-27-185 ~]$ docker run --rm --name ldap -h ldap -d edtasixm06/ldapserver19
 
 
 [fedora@ip-172-31-27-185 ~]$ ldapsearch -x -h 172.17.0.2 -b "dc=edt,dc=org"
@@ -52,7 +62,7 @@ configurar el servidor com la nostre ip del ordinador local: 192.168.1.202
 
 i el port possar el que hem assignat en el tunnel ssh es ha dir: 1234.
 
-un cop realitzat aixo configurem i encenem el httpd
+un cop realitzat aixo configurem i encenem el httpd desde el docker de php
 
 ```
 /usr/sbin/httpd
@@ -68,9 +78,12 @@ I ja tindriem acces desde el nostre ordinador local a un php que obte la
 informació de un ldap creat a Amazon i tot de forma segura només accedint
 per el port 22.
 
-################################################################################
+**############################################################################**
 
-## Exercici 2
+## **Exercici 2**
+
+**Ldap estara en un docker local i el phpldapadmin el crearem en el servidor
+de Amazon.**
 
 Engem un ldap en el nostre ordinador i comprovem que funciona
 
